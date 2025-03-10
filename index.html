@@ -3,48 +3,44 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Happy Birthday</title>
+    <title>Birthday Surprise</title>
     <style>
         body {
             margin: 0;
-            overflow: hidden;
             display: flex;
             justify-content: center;
             align-items: center;
             height: 100vh;
             background-color: black;
         }
-        #video-container {
-            position: relative;
-        }
-        #candle-video, #cake-video {
-            width: 100vw;
-            height: 100vh;
-            object-fit: cover;
-        }
-        #clickArea {
-            position: absolute;
-            width: 100px;
-            height: 100px;
-            left: 50%;
-            top: 50%;
-            transform: translate(-50%, -50%);
+        img {
+            max-width: 100%;
+            max-height: 100vh;
             cursor: pointer;
-            background: rgba(255, 255, 255, 0.2);
         }
     </style>
 </head>
 <body>
-    <div id="video-container">
-        <video id="candle-video" src="candle.gif" autoplay loop></video>
-        <div id="clickArea"></div>
-    </div>
-    
+    <img id="animation" src="candle.gif" onclick="nextAnimation()">
+
     <script>
-        document.getElementById("clickArea").addEventListener("click", function() {
-            let videoContainer = document.getElementById("video-container");
-            videoContainer.innerHTML = '<video id="cake-video" src="candle_reveal.gif" autoplay></video>';
-        });
+        let step = 0;
+        function nextAnimation() {
+            const img = document.getElementById("animation");
+            if (step === 0) {
+                img.src = "cake_reveal.gif";
+                step++;
+            } else if (step === 1) {
+                img.src = "hooray.gif";
+                step++;
+            } else if (step === 2) {
+                img.src = "blow.gif";
+                step++;
+                setTimeout(() => {
+                    img.src = "hoorayoff.gif";
+                }, 2000); // Adjust time based on blow.gif duration
+            }
+        }
     </script>
 </body>
 </html>
