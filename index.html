@@ -32,11 +32,11 @@
             const body = document.body;
             if (step === 0) {
                 img.src = "candle_reveal.gif";
-                body.style.backgroundColor = "#87CEEB"; // Sky blue
                 step++;
                 setTimeout(() => {
                     if (step === 1) {
                         img.src = "hooraytp.gif";
+                        body.style.backgroundColor = "#87CEEB"; // Sky blue
                     }
                 }, 2400); // Adjust time based on candle_reveal.gif duration
             } else if (step === 1) {
