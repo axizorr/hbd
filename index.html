@@ -12,6 +12,7 @@
             align-items: center;
             height: 100vh;
             background-color: black;
+            transition: background-color 1s ease;
         }
         img {
             max-width: 100%;
@@ -27,8 +28,10 @@
         let step = 0;
         function nextAnimation() {
             const img = document.getElementById("animation");
+            const body = document.body;
             if (step === 0) {
                 img.src = "candle_reveal.gif";
+                body.style.backgroundColor = "#87CEEB"; // Sky blue
                 step++;
             } else if (step === 1) {
                 img.src = "hooraytp.gif";
