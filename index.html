@@ -36,14 +36,14 @@
 </head>
 <body>
     <div id="video-container">
-        <video id="candle-video" src="candle.mp4" autoplay loop></video>
+        <video id="candle-video" src="candle.gif" autoplay loop></video>
         <div id="clickArea"></div>
     </div>
     
     <script>
         document.getElementById("clickArea").addEventListener("click", function() {
             let videoContainer = document.getElementById("video-container");
-            videoContainer.innerHTML = '<video id="cake-video" src="cake_reveal.mp4" autoplay></video>';
+            videoContainer.innerHTML = '<video id="cake-video" src="candle_reveal.gif" autoplay></video>';
         });
     </script>
 </body>
