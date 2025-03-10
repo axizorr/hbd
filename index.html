@@ -33,10 +33,10 @@
                 img.src = "candle_reveal.gif";
                 body.style.backgroundColor = "#87CEEB"; // Sky blue
                 step++;
+                setTimeout(() => {
+                    img.src = "hooraytp.gif";
+                }, 2000);
             } else if (step === 1) {
-                img.src = "hooraytp.gif";
-                step++;
-            } else if (step === 2) {
                 img.src = "blowtp.gif";
                 step++;
                 setTimeout(() => {
