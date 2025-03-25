@@ -32,19 +32,24 @@
             const body = document.body;
             if (step === 0) {
                 img.src = "candle_reveal.gif";
+                img.onload = () => {
+                    setTimeout(() => {
+                        if (step === 0) {
+                            img.src = "hooraytp.gif";
+                            body.style.backgroundColor = "#87CEEB"; // Sky blue
+                            step++;
+                        }
+                    }, 2200); // Adjust time based on candle_reveal.gif duration
+                };
                 step++;
-                setTimeout(() => {
-                    if (step === 1) {
-                        img.src = "hooraytp.gif";
-                        body.style.backgroundColor = "#87CEEB"; // Sky blue
-                    }
-                }, 2200); // Adjust time based on candle_reveal.gif duration
             } else if (step === 1) {
                 img.src = "blowtp.gif";
+                img.onload = () => {
+                    setTimeout(() => {
+                        img.src = "hoorayoff.gif";
+                    }, 2800); // Adjust time based on blow.gif duration
+                };
                 step++;
-                setTimeout(() => {
-                    img.src = "hoorayoff.gif";
-                }, 2800); // Adjust time based on blow.gif duration
             }
         }
     </script>
