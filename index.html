@@ -13,30 +13,58 @@
             height: 100vh;
             background-color: black;
             transition: background-color 1s ease;
+            overflow: hidden;
         }
         img {
             width: 100vw;
             height: 70vh;
             object-fit: cover;
             cursor: pointer;
+            position: relative;
+            z-index: 1;
+        }
+        #confetti {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            object-fit: cover;
+            display: none;
+            z-index: 2;
         }
     </style>
 </head>
 <body>
     <img id="animation" src="candle.gif" onclick="nextAnimation()">
+    <img id="confetti" src="confettitp.gif">
+    <audio id="confettiSound" src="confetti.mp3"></audio>
+    <audio id="music" src="music.mp3" loop></audio>
 
     <script>
         let step = 0;
         function nextAnimation() {
             const img = document.getElementById("animation");
             const body = document.body;
+            const confetti = document.getElementById("confetti");
+            const music = document.getElementById("music");
+            const confettiSound = document.getElementById("confettiSound");
+            
             if (step === 0) {
                 img.src = "candle_reveal.gif";
                 setTimeout(() => {
                     img.src = "hooraytp.gif";
                     body.style.backgroundColor = "#87CEEB"; // Sky blue
+                    confetti.style.display = "block";
+                    confettiSound.play();
                     step++;
-                }, 2150); // Adjust time based on candle_reveal.gif duration
+                    setTimeout(() => {
+                        confetti.style.display = "none";
+                        confettiSound.pause();
+                        confettiSound.currentTime = 0;
+                        music.play();
+                    }, 15000); // Hide confetti after 15 seconds
+                }, 2200); // Adjust time based on candle_reveal.gif duration
             } else if (step === 1) {
                 img.src = "blowtp.gif";
                 step++;
