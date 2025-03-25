@@ -57,7 +57,11 @@
                     body.style.backgroundColor = "#87CEEB"; // Sky blue
                     confetti.style.display = "block";
                     confettiSound.play();
-                    music.play(); // Start music 2 seconds after confetti starts
+                    
+                    setTimeout(() => {
+                        music.play(); // Start music 2 seconds after confetti starts
+                    }, 2000);
+                    
                     step++;
                     setTimeout(() => {
                         confetti.style.display = "none";
