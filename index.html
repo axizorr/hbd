@@ -57,12 +57,12 @@
                     body.style.backgroundColor = "#87CEEB"; // Sky blue
                     confetti.style.display = "block";
                     confettiSound.play();
+                    music.play(); // Start music 2 seconds after confetti starts
                     step++;
                     setTimeout(() => {
                         confetti.style.display = "none";
                         confettiSound.pause();
                         confettiSound.currentTime = 0;
-                        music.play();
                     }, 15000); // Hide confetti after 15 seconds
                 }, 2200); // Adjust time based on candle_reveal.gif duration
             } else if (step === 1) {
