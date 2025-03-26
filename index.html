@@ -14,6 +14,16 @@
             background-color: black;
             transition: background-color 1s ease;
             overflow: hidden;
+            position: relative;
+        }
+        video {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 30vh;
+            object-fit: cover;
+            z-index: 0;
         }
         img {
             width: 100vw;
@@ -37,23 +47,12 @@
             z-index: 2;
             pointer-events: none;
         }
-        #video {
-            position: absolute;
-            top: 0;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 100vw;
-            height: 20vh;
-            object-fit: cover;
-            display: none;
-            z-index: 3;
-        }
     </style>
 </head>
 <body>
+    <video id="hbdVideo" src="hbd.mp4" muted autoplay loop></video>
     <img id="animation" src="candle.gif" onclick="nextAnimation()">
     <img id="confetti" src="confettitp.gif">
-    <video id="video" src="hbd.mp4" autoplay></video>
     <audio id="confettiSound" src="confetti.mp3"></audio>
     <audio id="music" src="music.mp3" loop></audio>
 
@@ -63,7 +62,6 @@
             const img = document.getElementById("animation");
             const body = document.body;
             const confetti = document.getElementById("confetti");
-            const video = document.getElementById("video");
             const music = document.getElementById("music");
             const confettiSound = document.getElementById("confettiSound");
             
@@ -73,8 +71,6 @@
                     img.src = "hooraytp.gif";
                     body.style.backgroundColor = "#87CEEB"; // Sky blue
                     confetti.style.display = "block";
-                    video.style.display = "block";
-                    video.play();
                     confettiSound.play();
                     
                     setTimeout(() => {
@@ -84,10 +80,9 @@
                     step++;
                     setTimeout(() => {
                         confetti.style.display = "none";
-                        video.style.display = "none";
                         confettiSound.pause();
                         confettiSound.currentTime = 0;
-                    }, 15000); // Hide confetti and video after 15 seconds
+                    }, 15000); // Hide confetti after 15 seconds
                 }, 2200); // Adjust time based on candle_reveal.gif duration
             } else if (step === 1) {
                 img.src = "blowtp.gif";
