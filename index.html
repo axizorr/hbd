@@ -24,6 +24,9 @@
             height: 30vh;
             object-fit: cover;
             z-index: 0;
+            -webkit-tap-highlight-color: transparent;
+            user-select: none;
+            outline: none;
         }
         img {
             width: 100vw;
@@ -71,10 +74,12 @@
                     img.src = "hooraytp.gif";
                     body.style.backgroundColor = "#87CEEB"; // Sky blue
                     confetti.style.display = "block";
+                    video.style.display = "block";
                     confettiSound.play();
                     
                     setTimeout(() => {
                         music.play(); // Start music 2 seconds after confetti starts
+                        video.play();
                     }, 2000);
                     
                     step++;
