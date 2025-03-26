@@ -53,7 +53,7 @@
     </style>
 </head>
 <body>
-    <video id="hbdVideo" src="hbd.mp4" muted autoplay loop></video>
+    <video id="hbdVideo" src="hbd.mp4" muted loop style="display: none;"></video>
     <img id="animation" src="candle.gif" onclick="nextAnimation()">
     <img id="confetti" src="confettitp.gif">
     <audio id="confettiSound" src="confetti.mp3"></audio>
@@ -75,12 +75,12 @@
                     img.src = "hooraytp.gif";
                     body.style.backgroundColor = "#87CEEB"; // Sky blue
                     confetti.style.display = "block";
-                    video.style.display = "block";
                     confettiSound.play();
                     
                     setTimeout(() => {
-                        music.play(); // Start music 2 seconds after confetti starts
-                        video.play();
+                        music.play(); // Start music
+                        video.style.display = "block"; // Show video
+                        video.play(); // Start video
                     }, 2000);
                     
                     step++;
