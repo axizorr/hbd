@@ -5,59 +5,74 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>HBD ya :)</title>
     <style>
+        <style>
+    html, body {
+        margin: 0;
+        padding: 0;
+        height: 100%;
+        background-color: black;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        overflow: hidden;
+    }
+
+    .container {
+        width: 100vw;
+        max-width: 430px; /* Simulate mobile portrait max width */
+        aspect-ratio: 9/16;
+        position: relative;
+        background-color: black;
+        overflow: hidden;
+    }
+
+    video, img, #confetti {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
+        -webkit-tap-highlight-color: transparent;
+        user-select: none;
+        outline: none;
+    }
+
+    img {
+        cursor: pointer;
+        z-index: 1;
+    }
+
+    #confetti {
+        z-index: 2;
+        display: none;
+        pointer-events: none;
+    }
+
+    video {
+        z-index: 0;
+        display: none;
+    }
+
+    @media (orientation: landscape) {
         body {
-            margin: 0;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            background-color: black;
-            transition: background-color 2s ease;
+            transform: rotate(90deg);
+            transform-origin: center;
+            height: 100vw;
+            width: 100vh;
             overflow: hidden;
-            position: relative;
         }
-        video {
-            position: absolute;
-            top: 20vh;
-            left: 0;
-            width: 100vw;
-            height: 30vh;
-            object-fit: cover;
-            z-index: 0;
-            -webkit-tap-highlight-color: transparent;
-            user-select: none;
-            outline: none;
-        }
-        img {
-            width: 100vw;
-            height: 70vh;
-            object-fit: cover;
-            cursor: pointer;
-            position: relative;
-            z-index: 1;
-            -webkit-tap-highlight-color: transparent;
-            user-select: none;
-            outline: none;
-        }
-        #confetti {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100vw;
-            height: 100vh;
-            object-fit: cover;
-            display: none;
-            z-index: 2;
-            pointer-events: none;
-        }
+    }
     </style>
 </head>
 <body>
-    <video id="hbdVideo" src="hbd.mp4" muted loop style="display: none;"></video>
-    <img id="animation" src="candle.gif" onclick="nextAnimation()">
-    <img id="confetti" src="confettitp.gif">
-    <audio id="confettiSound" src="confetti.mp3"></audio>
-    <audio id="music" src="music.mp3" loop></audio>
+    <div class="container">
+        <video id="hbdVideo" src="hbd.mp4" muted loop></video>
+        <img id="animation" src="candle.gif" onclick="nextAnimation()">
+        <img id="confetti" src="confettitp.gif">
+        <audio id="confettiSound" src="confetti.mp3"></audio>
+        <audio id="music" src="music.mp3" loop></audio>
+    </div>
 
     <script>
         let step = 0;
