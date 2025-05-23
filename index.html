@@ -16,7 +16,7 @@
             overflow: hidden;
             position: relative;
         }
-        hbdgif {
+        video {
             position: absolute;
             top: 20vh;
             left: 0;
@@ -53,7 +53,7 @@
     </style>
 </head>
 <body>
-    <img id="hbdGif" src="hbd.gif"></img>
+    <video id="hbdVideo" src="hbd.mp4" muted loop style="display: none;"></video>
     <img id="animation" src="candle.gif" onclick="nextAnimation()">
     <img id="confetti" src="confettitp.gif">
     <audio id="confettiSound" src="confetti.mp3"></audio>
@@ -67,7 +67,7 @@
             const confetti = document.getElementById("confetti");
             const music = document.getElementById("music");
             const confettiSound = document.getElementById("confettiSound");
-            const hbdgif = document.getElementById("hbdGif");
+            const video = document.getElementById("hbdVideo");
             
             if (step === 0) {
                 img.src = "candle_reveal.gif";
@@ -79,7 +79,8 @@
                     
                     setTimeout(() => {
                         music.play(); // Start music
-                        hbdgif.style.display = "block";
+                        video.style.display = "block"; // Show video
+                        video.play(); // Start video
                     }, 2000);
                     
                     step++;
